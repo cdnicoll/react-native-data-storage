@@ -1,12 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Input, Card, CardSection, Button } from './src/components/common';
+import { StyleSheet, Text, ScrollView } from 'react-native';
+import UserForm from './src/components/UserForm';
+import { CardSection, Card } from './src/components/common';
 
 export default class App extends React.Component {
+  mockData = [
+    { id: 1, name: 'Sarah', age: 20 },
+    { id: 2, name: 'Sam', age: 33 },
+    { id: 3, name: 'Wendy', age: 29 },
+    { id: 4, name: 'Cody', age: 34 },
+  ];
+
   state = {
     name: '',
     age: undefined,
   };
+
   onNameChange = text => {
     this.setState({ name: text });
   };
@@ -19,31 +28,26 @@ export default class App extends React.Component {
     console.log(this.state.name, this.state.age);
   };
 
+  renderUsers() {
+    return this.mockData.map(user => {
+      return (
+        <CardSection key={user.id}>
+          <Text>Name: {user.name} Age: {user.age}</Text>
+        </CardSection>
+      );
+    });
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Card>
-          <CardSection>
-            <Input
-              label='Name'
-              placeholder='Name'
-              onChangeText={this.onNameChange.bind(this)}
-              value={this.state.name}
-            />
-          </CardSection>
-          <CardSection>
-            <Input
-              label='Age'
-              placeholder='20'
-              onChangeText={this.onAgeChange.bind(this)}
-              value={this.state.age}
-            />
-          </CardSection>
-          <CardSection>
-            <Button onPress={this.onButtonPress.bind(this)}>Save</Button>
-          </CardSection>
-        </Card>
-      </View>
+      <ScrollView style={styles.container}>
+        <UserForm
+          onNameChange={this.onNameChange.bind(this)}
+          onAgeChange={this.onAgeChange.bind(this)}
+          onButtonPress={this.onButtonPress.bind(this)}
+        />
+        <Card>{this.renderUsers()}</Card>
+      </ScrollView>
     );
   }
 }
