@@ -18,14 +18,16 @@ export default class App extends React.Component {
   };
 
   componentWillMount() {
-    var config = {
+    console.log(process.env.FIREBASE_API_KEY)
+    var fbConfig = {
+      apiKey: process.env.FIREBASE_API_KEY,
       authDomain: "react-native-local-storage.firebaseapp.com",
       databaseURL: "https://react-native-local-storage.firebaseio.com",
       projectId: "react-native-local-storage",
       storageBucket: "react-native-local-storage.appspot.com",
       messagingSenderId: "654684231418"
     };
-    firebase.initializeApp(config);
+    firebase.initializeApp(fbConfig);
   }
 
   onNameChange = text => {
@@ -41,6 +43,7 @@ export default class App extends React.Component {
   };
 
   renderUsers() {
+    console.log(process.env.FIREBASE_API_KEY)
     return this.mockData.map(user => {
       return (
         <CardSection key={user.id}>

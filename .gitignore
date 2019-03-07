@@ -87,6 +87,7 @@ package-lock.json
 
 /coverage
 /third-party
+.env
 
 # Root dir shouldn't have Xcode project
 /*.xcodeproj

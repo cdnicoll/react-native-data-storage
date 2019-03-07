@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 14209,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
   "expoServerNgrokUrl": "https://tz-viz.anonymous.react-native-data-storage.exp.direct",
   "packagerNgrokUrl": "https://packager.tz-viz.anonymous.react-native-data-storage.exp.direct",
-  "ngrokPid": 14240
+  "ngrokPid": 17029
 }

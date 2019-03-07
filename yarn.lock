@@ -1199,6 +1199,13 @@ babel-plugin-check-es2015-constants@^6.8.0:
   dependencies:
     babel-runtime "^6.22.0"
 
+babel-plugin-inline-dotenv@^1.2.1:
+  version "1.2.1"
+  resolved "http://registry.npm.taobao.org/babel-plugin-inline-dotenv/download/babel-plugin-inline-dotenv-1.2.1.tgz#bfd9753b718d9732bdcdb72f5dd8e43f1e7ef5c0"
+  integrity sha1-v9l1O3GNlzK9zbcvXdjkPx5+9cA=
+  dependencies:
+    dotenv "^6.0.0"
+
 babel-plugin-module-resolver@^3.1.1:
   version "3.2.0"
   resolved "http://registry.npm.taobao.org/babel-plugin-module-resolver/download/babel-plugin-module-resolver-3.2.0.tgz#ddfa5e301e3b9aa12d852a9979f18b37881ff5a7"
@@ -2080,6 +2087,11 @@ dom-walk@^0.1.0:
   version "0.1.1"
   resolved "http://registry.npm.taobao.org/dom-walk/download/dom-walk-0.1.1.tgz#672226dc74c8f799ad35307df936aba11acd6018"
   integrity sha1-ZyIm3HTI95mtNTB9+TaroRrNYBg=
+
+dotenv@^6.0.0:
+  version "6.2.0"
+  resolved "http://registry.npm.taobao.org/dotenv/download/dotenv-6.2.0.tgz#941c0410535d942c8becf28d3f357dbd9d476064"
+  integrity sha1-lBwEEFNdlCyL7PKNPzV9vZ1HYGQ=
 
 ee-first@1.1.1:
   version "1.1.1"
