@@ -11,7 +11,7 @@ Goals:
     ☐ When deleting the app and reinstalling it, logging in, the user should then see their data @created(03-07-19 12:34)
     ☐ If they create data under an anonymous account, but also have data under a perminant account and switch the data, proper logic should be handled @created(03-07-19 12:36)
 Todo:
-  ☐ Log user in anonymously @created(03-07-19 12:26)
+  ✔ Log user in anonymously @created(03-07-19 12:26) @done(03-07-19 13:37)
   ☐ Create an interface that can be used with SQLite or Mongodb @created(03-07-19 12:25)
       methods:  
         ☐ userCreate @created(03-07-19 12:26)
@@ -25,4 +25,4 @@ Todo:
   ☐ Convert anonymous account to a perminant account @created(03-07-19 12:30)
     ~ https://firebase.google.com/docs/auth/web/anonymous-auth
   ☐ When converting (or signing in) to a perminant account check if the data is more new, if so merge/use perminant data @created(03-07-19 12:35)
-  ☐ Add API Key to .env config @created(03-07-19 12:37)
+  ✔ Add API Key to .env config @created(03-07-19 12:37) @done(03-07-19 13:04)

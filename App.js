@@ -18,16 +18,29 @@ export default class App extends React.Component {
   };
 
   componentWillMount() {
-    console.log(process.env.FIREBASE_API_KEY)
     var fbConfig = {
       apiKey: process.env.FIREBASE_API_KEY,
-      authDomain: "react-native-local-storage.firebaseapp.com",
-      databaseURL: "https://react-native-local-storage.firebaseio.com",
-      projectId: "react-native-local-storage",
-      storageBucket: "react-native-local-storage.appspot.com",
-      messagingSenderId: "654684231418"
+      authDomain: 'react-native-local-storage.firebaseapp.com',
+      databaseURL: 'https://react-native-local-storage.firebaseio.com',
+      projectId: 'react-native-local-storage',
+      storageBucket: 'react-native-local-storage.appspot.com',
+      messagingSenderId: '654684231418',
     };
     firebase.initializeApp(fbConfig);
+  }
+
+  componentDidMount() {
+    // Log user in anonymously for now
+    firebase
+      .auth()
+      .signInAnonymously()
+      .then(user => {
+        console.log(user);
+      })
+      .catch(err => {
+        // Handle Errors here.
+        console.log(err);
+      });
   }
 
   onNameChange = text => {
@@ -43,11 +56,12 @@ export default class App extends React.Component {
   };
 
   renderUsers() {
-    console.log(process.env.FIREBASE_API_KEY)
     return this.mockData.map(user => {
       return (
         <CardSection key={user.id}>
-          <Text>Name: {user.name} Age: {user.age}</Text>
+          <Text>
+            Name: {user.name} Age: {user.age}
+          </Text>
         </CardSection>
       );
     });
