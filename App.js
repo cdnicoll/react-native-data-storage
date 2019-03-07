@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, ScrollView } from 'react-native';
+import firebase from 'firebase';
 import UserForm from './src/components/UserForm';
 import { CardSection, Card } from './src/components/common';
 
@@ -15,6 +16,17 @@ export default class App extends React.Component {
     name: '',
     age: undefined,
   };
+
+  componentWillMount() {
+    var config = {
+      authDomain: "react-native-local-storage.firebaseapp.com",
+      databaseURL: "https://react-native-local-storage.firebaseio.com",
+      projectId: "react-native-local-storage",
+      storageBucket: "react-native-local-storage.appspot.com",
+      messagingSenderId: "654684231418"
+    };
+    firebase.initializeApp(config);
+  }
 
   onNameChange = text => {
     this.setState({ name: text });

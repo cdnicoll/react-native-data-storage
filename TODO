@@ -1,0 +1,28 @@
+Goals:
+  ☐ When app launches it will login and fetch all users @created(03-07-19 12:31)
+  ☐ Ability to create new users and save them to Firebase @created(03-07-19 12:32)
+  ☐ User has the ability to convert their anonymous account to a perminant account @created(03-07-19 12:32)
+  If the account is anonymous:
+    ☐ Upon closing the app and reopening it, data should be persistant @created(03-07-19 12:33)
+    ☐ When deleting the app and reinstalling it, data should be gone @created(03-07-19 12:33)
+    ☐ Data is not accessible from other devices @created(03-07-19 12:34)
+  If the account is perminant:
+    ☐ Upon closing the app and reopening it, data should be persistant @created(03-07-19 12:34)
+    ☐ When deleting the app and reinstalling it, logging in, the user should then see their data @created(03-07-19 12:34)
+    ☐ If they create data under an anonymous account, but also have data under a perminant account and switch the data, proper logic should be handled @created(03-07-19 12:36)
+Todo:
+  ☐ Log user in anonymously @created(03-07-19 12:26)
+  ☐ Create an interface that can be used with SQLite or Mongodb @created(03-07-19 12:25)
+      methods:  
+        ☐ userCreate @created(03-07-19 12:26)
+          ~ POST method
+        ☐ userSave @created(03-07-19 12:27)
+          ~ PUT method
+        ☐ userDelete @created(03-07-19 12:27) @low
+          ~ DELETE method
+        ☐ userFetch @created(03-07-19 12:28)
+          ~ GET method
+  ☐ Convert anonymous account to a perminant account @created(03-07-19 12:30)
+    ~ https://firebase.google.com/docs/auth/web/anonymous-auth
+  ☐ When converting (or signing in) to a perminant account check if the data is more new, if so merge/use perminant data @created(03-07-19 12:35)
+  ☐ Add API Key to .env config @created(03-07-19 12:37)
