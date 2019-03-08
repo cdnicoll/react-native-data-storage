@@ -14,15 +14,17 @@ Todo:
   ✔ Log user in anonymously @created(03-07-19 12:26) @done(03-07-19 13:37)
   ☐ Create an interface that can be used with SQLite or Mongodb @created(03-07-19 12:25)
       methods:  
-        ☐ userCreate @created(03-07-19 12:26)
+        ✔ userCreate @created(03-07-19 12:26) @done(03-07-19 20:32)
           ~ POST method
         ☐ userSave @created(03-07-19 12:27)
           ~ PUT method
         ☐ userDelete @created(03-07-19 12:27) @low
           ~ DELETE method
-        ☐ userFetch @created(03-07-19 12:28)
+        ✔ usersFetch @created(03-07-19 12:28) @done(03-07-19 20:32)
           ~ GET method
+          ~ Fetches all users
   ☐ Convert anonymous account to a perminant account @created(03-07-19 12:30)
     ~ https://firebase.google.com/docs/auth/web/anonymous-auth
   ☐ When converting (or signing in) to a perminant account check if the data is more new, if so merge/use perminant data @created(03-07-19 12:35)
   ✔ Add API Key to .env config @created(03-07-19 12:37) @done(03-07-19 13:04)
+  ☐ Each account should be unique and should contain its own set of user data @created(03-07-19 13:39)

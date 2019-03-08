@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, ScrollView } from 'react-native';
+import { StyleSheet, Text, ScrollView, View } from 'react-native';
 import firebase from 'firebase';
 import UserForm from './src/components/UserForm';
-import { CardSection, Card } from './src/components/common';
+import { CardSection, Card, Spinner, Button } from './src/components/common';
+import Users from './src/db/Users';
 
 export default class App extends React.Component {
   mockData = [
@@ -13,11 +14,11 @@ export default class App extends React.Component {
   ];
 
   state = {
-    name: '',
-    age: undefined,
+    isLoggedIn: false,
+    employees: [],
   };
 
-  componentWillMount() {
+  async componentWillMount() {
     var fbConfig = {
       apiKey: process.env.FIREBASE_API_KEY,
       authDomain: 'react-native-local-storage.firebaseapp.com',
@@ -27,40 +28,49 @@ export default class App extends React.Component {
       messagingSenderId: '654684231418',
     };
     firebase.initializeApp(fbConfig);
+    try {
+      console.log('signing the user');
+      const user = await this.signInUser();
+      console.log(`user is signed in`);
+      this.setState({ isLoggedIn: true });
+      console.log('fetching employees...');
+      const employees = await Users.fetch();
+      console.log("got them!")
+      this.setState({ employees });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
-  componentDidMount() {
-    // Log user in anonymously for now
-    firebase
-      .auth()
-      .signInAnonymously()
-      .then(user => {
-        console.log(user);
-      })
-      .catch(err => {
-        // Handle Errors here.
-        console.log(err);
-      });
+  signInUser = () => {
+    return new Promise((resolve, reject) => {
+      firebase
+        .auth()
+        .signInAnonymously()
+        .then(user => {
+          resolve(user);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  };
+
+   onButtonPress = async() => {
+    const employees = await Users.fetch();
+    console.log("got them!")
+    this.setState({ employees });
   }
-
-  onNameChange = text => {
-    this.setState({ name: text });
-  };
-
-  onAgeChange = text => {
-    this.setState({ age: text });
-  };
-
-  onButtonPress = () => {
-    console.log(this.state.name, this.state.age);
-  };
 
   renderUsers() {
-    return this.mockData.map(user => {
+    const { employees } = this.state;
+    if (!employees) return;
+
+    return Object.keys(employees).map(employee => {
       return (
-        <CardSection key={user.id}>
+        <CardSection key={employee}>
           <Text>
-            Name: {user.name} Age: {user.age}
+            Name: {employees[employee].name} Age: {employees[employee].age}
           </Text>
         </CardSection>
       );
@@ -68,16 +78,23 @@ export default class App extends React.Component {
   }
 
   render() {
-    return (
-      <ScrollView style={styles.container}>
-        <UserForm
-          onNameChange={this.onNameChange.bind(this)}
-          onAgeChange={this.onAgeChange.bind(this)}
-          onButtonPress={this.onButtonPress.bind(this)}
-        />
-        <Card>{this.renderUsers()}</Card>
-      </ScrollView>
-    );
+    if (this.state.isLoggedIn) {
+      return (
+        <ScrollView style={styles.container}>
+          <UserForm />
+          <CardSection>
+          <Button onPress={this.onButtonPress}>Update Employee List</Button>
+          </CardSection>
+          <Card>{this.renderUsers()}</Card>
+        </ScrollView>
+      );
+    } else {
+      return (
+        <View style={styles.container}>
+          <Spinner />
+        </View>
+      );
+    }
   }
 }
 
