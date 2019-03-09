@@ -27,4 +27,14 @@ Todo:
     ~ https://firebase.google.com/docs/auth/web/anonymous-auth
   ☐ When converting (or signing in) to a perminant account check if the data is more new, if so merge/use perminant data @created(03-07-19 12:35)
   ✔ Add API Key to .env config @created(03-07-19 12:37) @done(03-07-19 13:04)
-  ☐ Each account should be unique and should contain its own set of user data @created(03-07-19 13:39)
+  ✔ Each account should be unique and should contain its own set of user data @created(03-07-19 13:39) @done(03-08-19 14:44)
+  ✔ Auto populate data @created(03-08-19 14:58) @done(03-08-19 15:47)
+ ☐ Add router @created(03-08-19 15:51)
+ ☐ Create Tab Bar @created(03-08-19 15:51)
+      ~ https://medium.com/@ian.mundy/using-react-native-router-flux-with-redux-9b10be35cd37
+  ☐ Create an Account screen @created(03-08-19 15:44)
+    ☐ Login Form @created(03-08-19 15:44)
+    ☐ Button to update account @created(03-08-19 15:44)
+    ☐ Button to sign out @created(03-08-19 15:44)
+      ~ If account is a perminant account they should not be able to sign in as anonymous, or they can but shoudn't see data from linked account
+  ☐ Move Employee List to a new Screen @created(03-08-19 15:42)

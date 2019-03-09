@@ -1,6 +1,6 @@
 import React from 'react';
 import faker from 'Faker';
-import Users from '../db/Users';
+import Employees from '../db/Employees';
 import { Input, Card, CardSection, Button } from './common';
 
 class UserForm extends React.Component {
@@ -9,9 +9,9 @@ class UserForm extends React.Component {
     age: '',
   };
 
-  onButtonPress = () => {
+  onSaveButtonPress = () => {
     console.log('creating user');
-    Users.create({ name: this.state.name, age: this.state.age });
+    Employees.create({ name: this.state.name, age: this.state.age });
     this.setState({
       name: '',
       age: '',
@@ -44,7 +44,7 @@ class UserForm extends React.Component {
           />
         </CardSection>
         <CardSection>
-          <Button onPress={this.onButtonPress}>Save</Button>
+          <Button onPress={this.onSaveButtonPress}>Save</Button>
           <Button onPress={this.onFakeDataPress}>Fake Data</Button>
         </CardSection>
       </Card>

@@ -2,6 +2,7 @@ import firebase from 'firebase';
 
 export default {
   fetch: (req, res) => {
+    console.log('fetching employees...');
     const { currentUser } = firebase.auth();
 
     return new Promise((resolve, reject) => {
@@ -9,6 +10,7 @@ export default {
         .database()
         .ref(`/users/${currentUser.uid}/employees`)
         .on('value', snapshot => {
+          console.log('got them...');
           resolve(snapshot.val());
         });
     });
