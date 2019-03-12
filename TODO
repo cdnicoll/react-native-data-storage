@@ -1,11 +1,12 @@
 Goals:
-  ☐ When app launches it will login and fetch all users @created(03-07-19 12:31)
+  ☐ When opening the app, check to see if the is already logged in, if not log them in anonymously @created(03-12-19 16:07)
+  ☐ After the account status check, fetch the users @created(03-07-19 12:31)
   ☐ Ability to create new users and save them to Firebase @created(03-07-19 12:32)
   ☐ User has the ability to convert their anonymous account to a perminant account @created(03-07-19 12:32)
   If the account is anonymous:
-    ☐ Upon closing the app and reopening it, data should be persistant @created(03-07-19 12:33)
-    ☐ When deleting the app and reinstalling it, data should be gone @created(03-07-19 12:33)
-    ☐ Data is not accessible from other devices @created(03-07-19 12:34)
+    ✔ Upon closing the app and reopening it, data should be persistant @created(03-07-19 12:33) @done(03-12-19 16:06)
+    ✔ When deleting the app and reinstalling it, data should be gone @created(03-07-19 12:33) @done(03-12-19 16:06)
+    ✔ Data is not accessible from other devices @created(03-07-19 12:34) @done(03-12-19 16:06)
   If the account is perminant:
     ☐ Upon closing the app and reopening it, data should be persistant @created(03-07-19 12:34)
     ☐ When deleting the app and reinstalling it, logging in, the user should then see their data @created(03-07-19 12:34)
@@ -23,9 +24,6 @@ Todo:
         ✔ usersFetch @created(03-07-19 12:28) @done(03-07-19 20:32)
           ~ GET method
           ~ Fetches all users
-  ☐ Convert anonymous account to a perminant account @created(03-07-19 12:30)
-    ~ https://firebase.google.com/docs/auth/web/anonymous-auth
-  ☐ When converting (or signing in) to a perminant account check if the data is more new, if so merge/use perminant data @created(03-07-19 12:35)
   ✔ Add API Key to .env config @created(03-07-19 12:37) @done(03-07-19 13:04)
   ✔ Each account should be unique and should contain its own set of user data @created(03-07-19 13:39) @done(03-08-19 14:44)
   ✔ Auto populate data @created(03-08-19 14:58) @done(03-08-19 15:47)
@@ -33,10 +31,15 @@ Todo:
  ✔ Create Tab Bar @created(03-08-19 15:51) @done(03-12-19 13:43)
       ~ https://medium.com/@ian.mundy/using-react-native-router-flux-with-redux-9b10be35cd37
   ✔ Create an Account screen @created(03-08-19 15:44) @done(03-12-19 15:05)
-    ☐ Login Form @created(03-08-19 15:44)
-    ☐ Button to update account @created(03-08-19 15:44)
+    ✔ Login Form @created(03-08-19 15:44) @done(03-12-19 16:33)
+    ✔ Button to update account @created(03-08-19 15:44) @done(03-12-19 16:33)
     ☐ Button to sign out @created(03-08-19 15:44)
       ~ If account is a perminant account they should not be able to sign in as anonymous, or they can but shoudn't see data from linked account
     ☐ Link account @created(03-12-19 16:00)
     `~ https://firebase.google.com/docs/auth/web/account-linking
+    ~  When converting (or signing in) to a perminant account check if the data is more new, if so merge/use perminant data
+    ☐ Setup auth persistance @created(03-12-19 16:24)
+      ~ https://firebase.google.com/docs/auth/web/auth-state-persistence
+    ☐ Convert anonymous account to a perminant account @created(03-07-19 12:30)
+    ~ https://firebase.google.com/docs/auth/web/anonymous-auth
   ✔ Move Employee List to a new Screen @created(03-08-19 15:42) @done(03-12-19 13:42)
