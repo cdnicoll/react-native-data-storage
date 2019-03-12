@@ -17,6 +17,11 @@ export default {
     });
   },
 
+  isLoggedIn: () => {
+    const { currentUser } = firebase.auth();
+    return currentUser;
+  },
+
   loginEmailPass: () => {
     // TODO
   },
