@@ -1,14 +1,27 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { Card, CardSection } from '../common';
 
 class AccountScreen extends React.Component {
   render() {
     return (
-      <View>
-        <Text>Account Screen</Text>
+      <View style={styles.container}>
+        <Card>
+          <CardSection>
+            <Text>Account Screen</Text>
+          </CardSection>
+        </Card>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    paddingTop: 20,
+  },
+});
 
 export default AccountScreen;

@@ -3,7 +3,7 @@ import faker from 'Faker';
 import Employees from '../db/Employees';
 import { Input, Card, CardSection, Button } from './common';
 
-class UserForm extends React.Component {
+class EmployeeForm extends React.Component {
   state = {
     name: '',
     age: '',
@@ -52,4 +52,4 @@ class UserForm extends React.Component {
   }
 }
 
-export default UserForm;
+export default EmployeeForm;
