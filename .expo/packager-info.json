@@ -3,7 +3,7 @@
   "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://tz-viz.anonymous.react-native-data-storage.exp.direct",
+  "packagerNgrokUrl": "https://packager.tz-viz.anonymous.react-native-data-storage.exp.direct",
+  "ngrokPid": 33813
 }

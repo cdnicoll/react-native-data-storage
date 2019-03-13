@@ -4,15 +4,22 @@ import { Input, Card, CardSection, Button } from './common';
 import User from '../db/User';
 
 class UpgradeAccountForm extends React.Component {
-    state = {
-        email: '',
-        password: ''
-    }
+  state = {
+    email: "Test@test.com",
+    password: "Tester",
+  };
+
   updateToPerminantAccountPress = async () => {
-    User.updateToPerminantAccount({
-      email: this.state.email,
-      password: this.state.password,
-    });
+    try {
+      await User.linkToEmailPassAccount({
+        email: this.state.email,
+        password: this.state.password,
+      });
+      console.log(User.isLoggedIn() ? true : false);
+    } catch (err) {
+      console.log(err);
+    }
+    
   };
 
   render() {
@@ -36,10 +43,7 @@ class UpgradeAccountForm extends React.Component {
         </CardSection>
         <CardSection>
           <Button onPress={this.updateToPerminantAccountPress}>
-            Convert Account
-          </Button>
-          <Button onPress={this.updateToPerminantAccountPress}>
-            Login
+            Link Account
           </Button>
         </CardSection>
       </Card>
