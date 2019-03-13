@@ -44,3 +44,4 @@ Todo:
       ~ https://firebase.google.com/docs/auth/web/auth-state-persistence
       ~ If the user has already logged in they should not have to login again and it should not sign them in anonymously
   ✔ Move Employee List to a new Screen @created(03-08-19 15:42) @done(03-12-19 13:42)
+  ☐ Clean up Views, make them more logical @created(03-13-19 16:54)
