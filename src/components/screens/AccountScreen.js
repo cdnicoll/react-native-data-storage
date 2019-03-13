@@ -5,6 +5,19 @@ import User from '../../db/User';
 import UpgradeAccountForm from '../UpgradeAccountForm';
 
 class AccountScreen extends React.Component {
+  debugCurrentUser = () => {
+    console.log(User.getUser());
+  };
+
+  unlinkEmailPass = async () => {
+    try {
+    await User.unlinkAccount();
+    await User.loginAnonymous();
+    } catch(err) {
+      console.log(err);
+    }
+  }
+
   renderAccountStatus = () => {
     const isAccountAnonymous = User.isAccountAnonymous();
     if (isAccountAnonymous) {
@@ -22,12 +35,30 @@ class AccountScreen extends React.Component {
       );
     }
     return (
-      <Text style={styles.perminantAccount}>The account is perminant</Text>
+      <Card>
+        <CardSection>
+          <Text style={styles.perminantAccount}>The account is perminant</Text>
+        </CardSection>
+        <CardSection>
+        <Button onPress={this.unlinkEmailPass.bind(this)}>Unlink Email/Pass</Button>
+        </CardSection>
+      </Card>
     );
   };
 
   render() {
-    return <View style={styles.container}>{this.renderAccountStatus()}</View>;
+    return (
+      <View style={styles.container}>
+        {this.renderAccountStatus()}
+        <Card>
+          <CardSection>
+            <Button onPress={this.debugCurrentUser.bind(this)}>
+              Console User
+            </Button>
+          </CardSection>
+        </Card>
+      </View>
+    );
   }
 }
 

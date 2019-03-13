@@ -25,8 +25,18 @@ export default class App extends React.Component {
     };
     firebase.initializeApp(fbConfig);
 
-    const user = await User.loginAnonymous();
-    this.setState({'loggedIn':true})
+    console.log("checking if user is authed")
+    firebase.auth().onAuthStateChanged(async user => {
+      if (user) {
+        console.log('user is loggeded in');
+      } else {
+        const user = await User.loginAnonymous();
+      }
+      this.setState({ loggedIn: true });
+    });
+
+    //const user = await User.loginAnonymous();
+    //this.setState({ loggedIn: true });
   }
 
   render() {

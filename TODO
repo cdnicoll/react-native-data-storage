@@ -35,11 +35,12 @@ Todo:
     ✔ Button to update account @created(03-08-19 15:44) @done(03-12-19 16:33)
     ☐ Button to sign out @created(03-08-19 15:44)
       ~ If account is a perminant account they should not be able to sign in as anonymous, or they can but shoudn't see data from linked account
+    ✔ Convert anonymous account to a perminant account @created(03-07-19 12:30) @done(03-13-19 15:08)
+      ~ https://firebase.google.com/docs/auth/web/anonymous-auth
     ✔ Link account @created(03-12-19 16:00) @done(03-12-19 20:54)
     `~ https://firebase.google.com/docs/auth/web/account-linking
     ~  When converting (or signing in) to a perminant account check if the data is more new, if so merge/use perminant data
-    ☐ Setup auth persistance @created(03-12-19 16:24)
+    ✔ Setup auth persistance @created(03-12-19 16:24) @done(03-13-19 16:06)
       ~ https://firebase.google.com/docs/auth/web/auth-state-persistence
-    ☐ Convert anonymous account to a perminant account @created(03-07-19 12:30)
-    ~ https://firebase.google.com/docs/auth/web/anonymous-auth
+      ~ If the user has already logged in they should not have to login again and it should not sign them in anonymously
   ✔ Move Employee List to a new Screen @created(03-08-19 15:42) @done(03-12-19 13:42)
