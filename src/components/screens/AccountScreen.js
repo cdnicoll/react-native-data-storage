@@ -11,8 +11,9 @@ class AccountScreen extends React.Component {
 
   unlinkEmailPass = async () => {
     try {
-    await User.unlinkAccount();
-    await User.loginAnonymous();
+      await User.signout();
+    //await User.unlinkAccount();
+    //await User.loginAnonymous();
     } catch(err) {
       console.log(err);
     }

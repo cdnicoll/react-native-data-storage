@@ -34,7 +34,11 @@ Todo:
     ✔ Login Form @created(03-08-19 15:44) @done(03-12-19 16:33)
     ✔ Button to update account @created(03-08-19 15:44) @done(03-12-19 16:33)
     ☐ Button to sign out @created(03-08-19 15:44)
-      ~ If account is a perminant account they should not be able to sign in as anonymous, or they can but shoudn't see data from linked account
+      ~ Only show if the account is linked
+      ~ Remove all data that is within employees
+      ~ treated as a new anonymous user
+    ☐ Sign in get employees @created(03-14-19 14:30)
+      ~ If there is already employee data, grab it
     ✔ Convert anonymous account to a perminant account @created(03-07-19 12:30) @done(03-13-19 15:08)
       ~ https://firebase.google.com/docs/auth/web/anonymous-auth
     ✔ Link account @created(03-12-19 16:00) @done(03-12-19 20:54)
