@@ -1,65 +1,62 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { RkButton, RkText, RkTextInput } from 'react-native-ui-kitten';
 import { Card, CardSection, Button } from '../common';
 import User from '../../db/User';
 import UpgradeAccountForm from '../UpgradeAccountForm';
+import { UtilStyles } from '../../styles/styles';
+import { ScrollView } from 'react-native-gesture-handler';
 
 class AccountScreen extends React.Component {
+  state = {
+    attemptingLogin: false,
+  };
+
   debugCurrentUser = () => {
     console.log(User.getUser());
   };
 
-  unlinkEmailPass = async () => {
-    try {
-      await User.signout();
-    //await User.unlinkAccount();
-    //await User.loginAnonymous();
-    } catch(err) {
-      console.log(err);
-    }
-  }
-
-  renderAccountStatus = () => {
-    const isAccountAnonymous = User.isAccountAnonymous();
-    if (isAccountAnonymous) {
-      return (
-        <View>
-          <Card>
-            <CardSection>
-              <Text style={styles.anonymousAccount}>
-                The account is anonymous
-              </Text>
-            </CardSection>
-          </Card>
-          <UpgradeAccountForm />
-        </View>
-      );
-    }
-    return (
-      <Card>
-        <CardSection>
-          <Text style={styles.perminantAccount}>The account is perminant</Text>
-        </CardSection>
-        <CardSection>
-        <Button onPress={this.unlinkEmailPass.bind(this)}>Unlink Email/Pass</Button>
-        </CardSection>
-      </Card>
-    );
+  onLoginPress = () => {
+    console.log('login');
+    this.setState({ attemptingLogin: true });
+    // check if account already 
   };
 
-  render() {
+  renderSignoutButton = () => {
     return (
-      <View style={styles.container}>
-        {this.renderAccountStatus()}
-        <Card>
-          <CardSection>
-            <Button onPress={this.debugCurrentUser.bind(this)}>
-              Console User
-            </Button>
-          </CardSection>
-        </Card>
+      <View style={UtilStyles.section}>
+      <View style={UtilStyles.rowContainer}>
+        <View style={{ flex: 1 }}>
+          <RkButton
+            rkType='danger stretch'
+            onPress={this.onLoginPress}
+          >
+            Signout
+          </RkButton>
+        </View>
       </View>
+    </View>
+    )
+  }
+
+    // attempt to login user
+    // if they have not linked account
+    //    show button to link account
+    // if they have linked account
+    //    hide login form
+
+  render() {
+    if (User.isAccountAnonymous) {
+    return (
+      <ScrollView style={UtilStyles.container}>
+        <UpgradeAccountForm />
+      </ScrollView>
     );
+    } else {
+      <ScrollView style={UtilStyles.container}>
+        {this.renderSignoutButton()}
+      </ScrollView>
+    }
   }
 }
 

@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { Input, Card, CardSection, Button } from './common';
+import { RkButton, RkText, RkTextInput } from 'react-native-ui-kitten';
 import User from '../db/User';
+import { UtilStyles } from '../styles/styles';
 
 class UpgradeAccountForm extends React.Component {
   state = {
@@ -20,33 +22,38 @@ class UpgradeAccountForm extends React.Component {
       console.log(err);
     }
     
+   console.log(this.state);
+    
   };
 
   render() {
     return (
-      <Card>
-        <CardSection>
-          <Input
-            label='Email'
-            placeholder='Email'
-            onChangeText={email => this.setState({ email })}
-            value={this.state.email}
-          />
-        </CardSection>
-        <CardSection>
-          <Input
-            label='Password'
-            placeholder='password'
-            onChangeText={password => this.setState({ password })}
-            value={String(this.state.password)}
-          />
-        </CardSection>
-        <CardSection>
-          <Button onPress={this.updateToPerminantAccountPress}>
-            Link Account
-          </Button>
-        </CardSection>
-      </Card>
+      <View style={UtilStyles.section}>
+        <RkText rkType='header'>Login</RkText>
+        <View style={UtilStyles.rowContainer}>
+          <View style={{ flex: 1 }}>
+            <RkTextInput
+              autoCorrect={false}
+              autoCapitalize='none'
+              placeholder='Login'
+              clearButtonMode='always'
+              onChangeText={email => this.setState({ email })}
+            />
+            <RkTextInput
+              secureTextEntry={true}
+              placeholder='Password'
+              clearButtonMode='always'
+              onChangeText={password => this.setState({ password })}
+            />
+            <RkButton
+              rkType='success stretch'
+              onPress={this.updateToPerminantAccountPress}
+            >
+              Login
+            </RkButton>
+          </View>
+        </View>
+      </View>
     );
   }
 }

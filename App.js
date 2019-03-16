@@ -30,13 +30,10 @@ export default class App extends React.Component {
       if (user) {
         console.log('user is loggeded in');
       } else {
-        const user = await User.loginAnonymous();
+        await User.loginAnonymous();
       }
       this.setState({ loggedIn: true });
     });
-
-    //const user = await User.loginAnonymous();
-    //this.setState({ loggedIn: true });
   }
 
   render() {
