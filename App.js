@@ -2,6 +2,10 @@ import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { View, Text, StyleSheet } from 'react-native';
 import firebase from 'firebase';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import ReduxThunk from 'redux-thunk';
+import reducers from './src/redux/reducers';
 import { Spinner } from './src/components/common';
 import AppNavigator from './src/navigation/AppNavigator';
 import User from './src/db/User';
@@ -25,7 +29,7 @@ export default class App extends React.Component {
     };
     firebase.initializeApp(fbConfig);
 
-    console.log("checking if user is authed")
+    console.log('checking if user is authed');
     firebase.auth().onAuthStateChanged(async user => {
       if (user) {
         console.log('user is loggeded in');
@@ -37,13 +41,39 @@ export default class App extends React.Component {
   }
 
   render() {
+    let viewLoaded = (
+      <View style={styles.container}>
+        <Spinner />
+      </View>
+    );
+    
     if (this.state.loggedIn) {
-      return <AppContainer />;
+      viewLoaded = <AppContainer />;
+    }
+
+    return (
+      <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
+        {viewLoaded}
+      </Provider>
+    );
+
+    if (this.state.loggedIn) {
+      return (
+        <Provider
+          store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}
+        >
+          <AppContainer />
+        </Provider>
+      );
     } else {
       return (
-        <View style={styles.container}>
-          <Spinner />
-        </View>
+        <Provider
+          store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}
+        >
+          <View style={styles.container}>
+            <Spinner />
+          </View>
+        </Provider>
       );
     }
   }
